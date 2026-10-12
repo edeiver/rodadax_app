@@ -27,6 +27,17 @@
       "eas": {
         "projectId": "8700c727-c54a-42a6-91b5-4301b7d19f75"
       }
-    }
+    },
+    "plugins": [
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "Rodadax usa tu ubicación para mostrarte en el mapa y grabar el recorrido de tu rodada.",
+          "locationAlwaysAndWhenInUsePermission": "Rodadax necesita tu ubicación en todo momento para seguir grabando tu rodada aunque bloquees el teléfono o lo lleves en el soporte.",
+          "isIosBackgroundLocationEnabled": true,
+          "isAndroidBackgroundLocationEnabled": true
+        }
+      ]
+    ]
   }
 }
