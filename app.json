@@ -1,14 +1,14 @@
 {
   "expo": {
-    "name": "rodadax_app",
+    "name": "Rodadax",
     "slug": "rodadax_app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
+    "userInterfaceStyle": "automatic",
     "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "com.edeiver.rodadax-app"
+      "supportsTablet": false,
+      "bundleIdentifier": "com.edeiver.rodadax"
     },
     "android": {
       "adaptiveIcon": {

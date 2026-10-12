@@ -12,6 +12,8 @@ const RootStack = createNativeStackNavigator<RootStackParamList>();
 type RootStackType = typeof RootStack;
 
 declare module '@react-navigation/native' {
+    // eslint-disable-next-line @typescript-eslint/no-empty-object-type -- requerido para registrar el RootNavigator
+
   interface RootNavigator extends RootStackType {}
 }
 const AppNavigator: React.FC =() => {
