@@ -10,7 +10,11 @@ const Tab = createBottomTabNavigator<TabParamsList>();
 
 const TabNavigator: React.FC = () => {
    return (
-    <Tab.Navigator>
+    <Tab.Navigator
+      screenOptions={{
+        headerShown: false
+      }}
+    >
         <Tab.Screen name="Ride" component={RideScreen} />
         <Tab.Screen name="History" component={HistoryScreen} />
         <Tab.Screen name="Community" component={CommunityScreen} />
