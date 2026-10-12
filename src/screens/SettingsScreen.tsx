@@ -1,11 +1,11 @@
-import { View, Text } from "react-native";
+import { View, Text } from 'react-native';
 
-const SettingsScreen: React.FC = ( ) => {
-    return(
-        <View>
-            <Text>Settings Screen</Text>
-        </View>
-    )
-}
+const SettingsScreen: React.FC = () => {
+  return (
+    <View>
+      <Text>Settings Screen</Text>
+    </View>
+  );
+};
 
 export default SettingsScreen;

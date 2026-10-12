@@ -1,11 +1,11 @@
-import { View, Text} from 'react-native'
+import { View, Text } from 'react-native';
 
-const RideScreen: React.FC = () =>{
-    return(
-        <View>
-            <Text>Ride Screen</Text>
-        </View>
-    )
-}
+const RideScreen: React.FC = () => {
+  return (
+    <View>
+      <Text>Ride Screen</Text>
+    </View>
+  );
+};
 
-export default RideScreen
+export default RideScreen;

@@ -9,17 +9,17 @@ import SettingsScreen from '../screens/SettingsScreen';
 const Tab = createBottomTabNavigator<TabParamsList>();
 
 const TabNavigator: React.FC = () => {
-   return (
+  return (
     <Tab.Navigator
       screenOptions={{
-        headerShown: false
+        headerShown: false,
       }}
     >
-        <Tab.Screen name="Ride" component={RideScreen} />
-        <Tab.Screen name="History" component={HistoryScreen} />
-        <Tab.Screen name="Community" component={CommunityScreen} />
-        <Tab.Screen name="Settings" component={SettingsScreen} />
+      <Tab.Screen name="Ride" component={RideScreen} />
+      <Tab.Screen name="History" component={HistoryScreen} />
+      <Tab.Screen name="Community" component={CommunityScreen} />
+      <Tab.Screen name="Settings" component={SettingsScreen} />
     </Tab.Navigator>
   );
-}
+};
 export default TabNavigator;
