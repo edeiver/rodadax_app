@@ -2,10 +2,10 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import type { RootStackParamList } from './types';
 import React from 'react';
 import TabNavigator from './TabNavigator';
-import ActiveRideScreen from '../screens/ActiveRideScreen';
-import RideDetailScreen from '../screens/RideDetailScreen';
-import WelcomeScreen from '../screens/WelcomeScreen';
-import PermissionsScreen from '../screens/PermissionsScreen';
+import ActiveRideScreen from '@/screens/ActiveRideScreen';
+import RideDetailScreen from '@/screens/RideDetailScreen';
+import WelcomeScreen from '@/screens/WelcomeScreen';
+import PermissionsScreen from '@/screens/PermissionsScreen';
 
 const RootStack = createNativeStackNavigator<RootStackParamList>();
 
