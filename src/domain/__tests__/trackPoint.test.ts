@@ -1,4 +1,4 @@
-import { isAccurateEnough, normalizeSpeed } from '@/domain/trackPoint';
+import { isAccurateEnough, isPlausibleMovement, normalizeSpeed } from '@/domain/trackPoint';
 import type { TrackPoint } from '@/domain/types';
 
 const makePoint = (overrides: Partial<TrackPoint> = {}): TrackPoint => ({
@@ -39,5 +39,40 @@ describe('isAccurateEnough', () => {
   });
   it('accepts a point exactly at the limit', () => {
     expect(isAccurateEnough(makePoint({ accuracy: 20 }))).toBe(true);
+  });
+});
+
+describe('isPlausibleMovement', () => {
+  it('accepts normal movement', () => {
+    const previous = makePoint({ latitude: 10, timestamp: 0 });
+    const current = makePoint({ latitude: 10.0001, timestamp: 1000 });
+
+    expect(isPlausibleMovement(previous, current)).toBe(true);
+  });
+
+  it('rejects an impossible jump', () => {
+    const previous = makePoint({ latitude: 10, timestamp: 0 });
+    const current = makePoint({ latitude: 10.5, timestamp: 1000 });
+
+    expect(isPlausibleMovement(previous, current)).toBe(false);
+  });
+
+  it('rejects points with the same timestamp', () => {
+    const previous = makePoint({ latitude: 10, timestamp: 1000 });
+    const current = makePoint({ latitude: 10.5, timestamp: 1000 });
+
+    expect(isPlausibleMovement(previous, current)).toBe(false);
+  });
+  it('accepts a stopped vehicle', () => {
+    const previous = makePoint({ latitude: 10.5, timestamp: 0 });
+    const current = makePoint({ latitude: 10.5, timestamp: 1000 });
+
+    expect(isPlausibleMovement(previous, current)).toBe(true);
+  });
+  it('accepts fast real movement over a long interval', () => {
+    const previous = makePoint({ latitude: 10.0, timestamp: 0 });
+    const current = makePoint({ latitude: 10.005, timestamp: 10000 });
+
+    expect(isPlausibleMovement(previous, current)).toBe(true);
   });
 });
