@@ -13,3 +13,8 @@ export type TrackPoint = Coordinates & {
   /** Momento de la lectura en milisegundos desde 1970 (como Date.now()). */
   timestamp: number;
 };
+export type RideAction = 'start' | 'pause' | 'resume' | 'stop';
+export type RideSession =
+  | { status: 'idle' }
+  | { status: 'tracking'; rideId: string; startedAt: number }
+  | { status: 'paused'; rideId: string; pausedAt: number; startedAt: number };
