@@ -1,7 +1,5 @@
-export type Coordinates = {
-  latitude: number;
-  longitude: number;
-};
+import { Coordinates } from './types';
+
 const EARTH_RADIUS_METERS = 6_371_000;
 const toRadians = (degrees: number): number => {
   return degrees * (Math.PI / 180);

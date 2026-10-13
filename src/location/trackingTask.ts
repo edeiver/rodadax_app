@@ -1,12 +1,7 @@
-import * as Location from 'expo-location';
+import { LocationObj } from '@/domain/types';
 import * as TaskManager from 'expo-task-manager';
 
 export const RIDE_TRACKING_TASK = 'ride-tracking';
-
-// Qué datos recibe la tarea: un arreglo de ubicaciones.
-type LocationObj = {
-  locations: Location.LocationObject[];
-};
 
 // "Cuando lleguen ubicaciones a 'ride-tracking', ejecuta esta función"
 TaskManager.defineTask<LocationObj>(RIDE_TRACKING_TASK, async ({ data, error }) => {
