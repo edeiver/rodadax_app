@@ -1,5 +1,10 @@
-import { LocationObj } from '@/domain/types';
+import * as Location from 'expo-location';
 import * as TaskManager from 'expo-task-manager';
+
+// Qué datos recibe la tarea: un arreglo de ubicaciones.
+export type LocationObj = {
+  locations: Location.LocationObject[];
+};
 
 export const RIDE_TRACKING_TASK = 'ride-tracking';
 
