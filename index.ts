@@ -1,4 +1,5 @@
 import { registerRootComponent } from 'expo';
+import './src/location/trackingTask';
 
 import App from './App';
 
