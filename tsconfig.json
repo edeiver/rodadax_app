@@ -6,6 +6,7 @@
     "noImplicitReturns": true,
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
+    "types": ["jest"]
   }
 }
