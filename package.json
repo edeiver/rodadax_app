@@ -38,5 +38,11 @@
     "lint": "expo lint",
     "test": "jest"
   },
+  "jest": {
+    "preset": "jest-expo",
+    "moduleNameMapper": {
+      "^@/(.*)$": "<rootDir>/src/$1"
+    }
+  },
   "private": true
 }
