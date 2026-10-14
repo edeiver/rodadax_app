@@ -14,7 +14,24 @@ export type TrackPoint = Coordinates & {
   timestamp: number;
 };
 export type RideAction = 'start' | 'pause' | 'resume' | 'stop';
-export type RideSession =
-  | { status: 'idle' }
-  | { status: 'tracking'; rideId: string; startedAt: number }
-  | { status: 'paused'; rideId: string; pausedAt: number; startedAt: number };
+
+export type IdleSession = { status: 'idle' };
+
+export type TrackingSession = {
+  status: 'tracking';
+  /** Identificador único de la rodada en curso. */
+  rideId: string;
+  /** Momento en que empezó la rodada, en milisegundos desde 1970 (como Date.now()). */
+  startedAt: number;
+};
+
+export type PausedSession = {
+  status: 'paused';
+  /** Identificador único de la rodada en curso. */
+  rideId: string;
+  /** Momento en que empezó la rodada, en milisegundos desde 1970 (como Date.now()). */
+  startedAt: number;
+  /** Momento en que se pausó, en milisegundos desde 1970 (como Date.now()). */
+  pausedAt: number;
+};
+export type RideSession = IdleSession | TrackingSession | PausedSession;
