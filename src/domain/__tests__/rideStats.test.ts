@@ -1,6 +1,6 @@
 import type { TrackPoint } from '@/domain/types';
-import { totalDistanceMeters } from '@/domain/rideStats';
 import { distanceInMeters } from '@/domain/geo';
+import { filterValidPoints, totalDistanceMeters } from '@/domain/rideStats';
 
 const makePoint = (overrides: Partial<TrackPoint> = {}): TrackPoint => ({
   latitude: 10.96,
@@ -29,5 +29,34 @@ describe('totalDistanceMeters', () => {
     const result = totalDistanceMeters(points);
 
     expect(result).toBeCloseTo(expected);
+  });
+});
+
+describe('filterValidPoints', () => {
+  it('returns an empty list when there are no points', () => {
+    expect(filterValidPoints([])).toEqual([]);
+  });
+
+  it('drops points with poor accuracy', () => {
+    const first = makePoint({ latitude: 10.96, timestamp: 0 });
+    const inaccurate = makePoint({ latitude: 10.9601, accuracy: 80, timestamp: 1000 });
+    const third = makePoint({ latitude: 10.9602, timestamp: 2000 });
+
+    expect(filterValidPoints([first, inaccurate, third])).toEqual([first, third]);
+  });
+
+  it('drops an impossible jump', () => {
+    const first = makePoint({ latitude: 10.96, timestamp: 0 });
+    const jump = makePoint({ latitude: 10.5, timestamp: 1000 });
+
+    expect(filterValidPoints([first, jump])).toEqual([first]);
+  });
+
+  it('keeps a valid point that comes after a jump', () => {
+    const first = makePoint({ latitude: 10.96, timestamp: 0 });
+    const jump = makePoint({ latitude: 10.5, timestamp: 1000 });
+    const third = makePoint({ latitude: 10.9601, timestamp: 2000 });
+
+    expect(filterValidPoints([first, jump, third])).toEqual([first, third]);
   });
 });
